@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta content="telephone=no" name="format-detection">
+		<title>放心吧旅游神器</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/phone.css"/>
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.fullPage.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/font.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+<body>
+
+<script type="text/javascript">
+//初始化
+window.appload = false;
+	function imgdragstart(){return false;}
+	//窗口宽度
+	var __windowheight = $(window).width();
+	if(__windowheight<640){
+		var capp = 1;
+	}
+	//加载进度 已图片为准
+var zhezhao = "<div class='zhezhao1' style='width:100%;height:"+$(window).height()+"px; position:fixed; top: 0; left: 0; z-index:10;'>";
+                             zhezhao += "<div class='zhezhaobg' style='width:100%;height:100%; background-color:#ffffff;'><\/div>";
+                             zhezhao += "<div style='position:absolute;top:0;bottom:0;left:0;right:0; margin:auto;z-index:2; width:100%;height:0.3rem; font-size:0.6rem; color:#ffcb99; line-height:1rem; text-align:center;'><div id='lodingoiu'><div class='lodingoiubg'></div></div><span id='longdingt'>亲...加载中...0%</span><\/div>"
+                             zhezhao +="</div>";
+//把所有的img文件放到数字imgattr里    并事先准备好对象变量 循环变量 imglength;
+var imgattr=new Array(),i=0,imgatrlen,imgobj=new Array();
+$('body').append(zhezhao);
+    imgattr = [
+    'images/page1-bg.jpg',
+     'images/page2-bg.jpg',
+       'images/page3-bg.jpg',
+        'images/page4-bg.jpg',
+        'images/page5-bg.png',
+        'images/logo.png',
+        'images/logo1.png',
+        'images/logo2.png',
+        'images/logo3.png',
+        'images/page1-img.png',
+        'images/page1-img2.png',
+        'images/page1-img3.png',
+        'images/page1-img4.png',
+        'images/page3-footer.png',
+        'images/page3-phone.png',
+        'images/page3-zhifu.png',
+        'images/page4-icon1.png',
+        'images/page4-icon2.png',
+        'images/page5-footer.png'
+      ];
+    imgatrlen = imgattr.length;
+    var loadlen = 0;
+    //这里用了一个递归函数
+    lodingpo(i,imgatrlen);
+    function lodingpo(i,imgatrlen){
+        imgobj = new Image();
+        imgobj.src=imgattr[i];
+        //加载完成loadlen++   并且形成一个递归循环
+        imgobj.onload = function(){
+        	 loadlen++;
+        	 var llo = Math.round(Math.ceil(loadlen/imgatrlen*100-15));
+        	 if(llo<=0){
+        	 	llo=0;
+        	 }
+	       var arrgum = arguments;
+        	if(loadlen>=imgatrlen){
+				window.appload = true;
+	           		$(".lodingoiubg").css({
+			            	width:llo+15+"%"
+			            });
+			            
+			            $(".zhezhao1").remove();
+	           		}else{
+
+	           		i++;
+	           		arrgum.callee(i,imgatrlen);
+	           	}
+	     }
+    }
+    //加载超时 6秒
+    setTimeout(function(){
+         $(".lodingoiubg").css({
+		            	width:loadlen/imgatrlen*100+"%"
+		            });
+		           $("#longdingt").html(loadlen/imgatrlen*100+"%");
+		           $(".zhezhao1").remove();
+	},9000);
+		</script>
+<!--header-->
+<div id="header">
+	<div class="logo">
+		<a href="index.html"><img src="images/logo.png"/></a>
+		<div class="logomenu">
+			<a href="#">登录</a>
+			&nbsp;|&nbsp;
+			<a href="#">注册</a>
+		</div>
+	</div>
+	<!--nav-->
+	<div class="nav">
+		<ul>
+			<li><a href="#page1">首页</a></li>
+			<li><a href="#page2">放心游</a></li>
+			<li><a href="#page3">放心付</a></li>
+			<li><a href="#page4">商家加入</a></li>
+			<li><a href="#page5">关于我们</a></li>
+		</ul>
+	</div>
+</div>
+		<div class="container">
+		<!--page1-->
+			<div class="section page1">
+				<div class="page1content">
+					<div class="page1from1 transtionall1">
+						<img src="images/page1-img.png"/>
+					</div>
+					<div class="page1from2 transtionall1">
+						<img src="images/page1-img2.png"/>
+					</div>
+					<div class="page1-text transtionall1">
+						<img src="images/logo.png"/>
+						<p>放心吧旅行神器</p>
+					</div>
+					<div class="page1-fj transtionall2">
+						<img src="images/page1-img3.png"/>
+					</div>
+					<div class="page1-fj1 transtionall1">
+						<img src="images/page1-img4.png"/>
+					</div>
+				</div>
+			</div>
+			<!--page2-->
+			<div class="section page2 transtionall1">
+				<div class="page2-bg transtionall1"></div>
+				<div class="page2-content">
+					<h1 class="transtionall1">目的地不知道玩什么？</h1>
+					<p class="transtionall1"><span>打开放心吧&nbsp;吃、喝、玩、乐&nbsp;尽在手中</span></p>
+					<div class="page2text">
+						在线购买折扣吃惊
+					</div>
+					<div class="fxb-phonebar">
+						<a class="iphone" href="#">
+							<span class="lxb-t">iPhone版下载</span>
+							<span>当前版本：1.1.10</span>
+						</a>
+						<a class="android" href="#">
+							<span class="lxb-t">Android版下载</span>
+							<span>当前版本：1.1.10</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!--page3-->
+			<div class="section page3 transtionall1">
+				<div class="page3-bg"></div>
+				<div class="page3-content">
+					<div class="page3-phone transtionall2">
+						<img src="images/page3-phone.png"/>
+					</div>
+					<div class="page3-zhifu">
+						<img class="transtionall1" src="images/page3-zhifu.png"/>
+					</div>
+				</div>
+				<div class="page3-footer">
+					<img class="transtionall1" src="images/page3-footer.png"/>
+				</div>
+				<div class="fxb-phonebar">
+					<a class="iphone" href="#">
+						<span class="lxb-t">iPhone版下载</span>
+						<span>当前版本：1.1.10</span>
+					</a>
+					<a class="android" href="#">
+						<span class="lxb-t">Android版下载</span>
+						<span>当前版本：1.1.10</span>
+					</a>
+				</div>
+			</div>
+			<!--page4-->
+			<div class="section page4 transtionall1">
+				<div class="page4-bg"></div>
+				<div class="page4-content">
+					<h1 class="transtionall1"><i>海外商家  你可以这样为中国游客服务</i></h1>
+					<ul>
+						<li class="plititme transtionall1">
+							<i>加入</i>
+							<img src="images/logo1.png"/>
+						</li>
+						<li class="transtionall1">
+							<i>JOIN</i>
+							<img src="images/logo2.png"/>
+							<p>合理避税，当天收款，超级吸引中国游客</p>
+						</li>
+						<li class="transtionall1">
+							<i>JOIN</i>
+							<img src="images/logo3.png"/>
+							<p>合理避税，当天收款，超级吸引中国游客</p>
+						</li>
+					</ul>
+				</div>
+				<div class="page4-line page4-line1 transtionall1"></div>
+				<div class="page4-line page4-line2 transtionall1"></div>
+				<div class="page4-sanjiao page4-sanjiao1 transtionall2"><img src="images/page4-icon1.png"/></div>
+				<div class="page4-sanjiao page4-sanjiao2 transtionall2"><img src="images/page4-icon1.png"/></div>
+				<div class="page4-sanjiao page4-sanjiao3 transtionall2"><img src="images/page4-icon1.png"/></div>
+				<div class="page4-sanjiao page4-sanjiao4 transtionall2"><img src="images/page4-icon1.png"/></div>
+				<div class="page4-sanjiao page4-sanjiao5 transtionall2"><img src="images/page4-icon1.png"/></div>
+			</div>
+			<!--page5-->
+			<div class="section page5 transtionall1">
+				<div class="page5-bg"></div>
+				<!--5.1屏-->
+				<div class="page5-content page5-content3 slide page5side">
+					<div class="jieshao">
+						<h1><i>公司介绍</i></h1>
+						<p>放心吧将和济州岛与普吉岛本地商户进行微信、支付宝支付合作，放心吧将开发一套支付系统，接入微信与支付宝，自动双币对照，实现游客无现金化消费，同时我们将跟大部分商家达成折扣合作，定期或不定期为游客开展各种线上支付打折活动。</p>
+					</div>
+				</div>
+				<!--5.1屏 end-->
+				<!--5.2屏-->
+				<div class="slide page5side">
+					
+					<div class="page5-content">
+						<div class="jieshao">
+							<h1><i>公司介绍</i></h1>
+							<p>放心吧将和济州岛与普吉岛本地商户进行微信、支付宝支付合作，放心吧将开发一套支付系统，接入微信与支付宝，自动双币对照，实现游客无现金化消费，同时我们将跟大部分商家达成折扣合作，定期或不定期为游客开展各种线上支付打折活动。</p>
+						</div>
+						<!--团队1-->
+						<div class="tuandui1">
+							<h1><i>放心吧团队</i></h1>
+								<ul>
+									<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+								</ul>
+								<p>放心吧将和济州岛与普吉岛本地商户进行微信、支付宝支付合作，放心吧将开发一套支付系统，接入微信与支付宝，自动双币对照，实现游客无现金化消费，同时我们将跟大部分商家达成折扣合作，定期或不定期为游客开展各种线上支付打折活动。</p>
+						</div>
+						<!--团队1 end-->
+					</div>
+			
+				</div>
+				<!--5.2屏 end-->
+				<!--5.3屏-->
+				<div class="slide page5side">
+					<div class="page5-content page5-content2">
+						<!--团队2-->
+						<div class="tuandui2">
+							<h1><i>韩国团队</i></h1>
+								<ul>
+									<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+								</ul>
+								<p>放心吧将和济州岛与普吉岛本地商户进行微信、支付宝支付合作，放心吧将开发一套支付系统，接入微信与支付宝，自动双币对照，实现游客无现金化消费，同时我们将跟大部分商家达成折扣合作，定期或不定期为游客开展各种线上支付打折活动。</p>
+						</div>
+						<!--团队2 end-->
+						<!--团队3-->
+						<div class="tuandui2 tuandui2-lb">
+							<h1><i>韩国团队</i></h1>
+								<ul>
+									<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+								</ul>
+								<p>放心吧将和济州岛与普吉岛本地商户进行微信、支付宝支付合作，放心吧将开发一套支付系统，接入微信与支付宝，自动双币对照，实现游客无现金化消费，同时我们将跟大部分商家达成折扣合作，定期或不定期为游客开展各种线上支付打折活动。</p>
+						</div>
+						<!--团队3 end-->
+						<!--团队4-->
+						<div class="tuandui2 tuandui2-lb">
+							<h1><i>韩国团队</i></h1>
+								<ul>
+									<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+										<li>
+										<div class="tdrwtx">
+											<img src="images/tx.jpg"/>
+										</div>
+										<p>xxxxxxxxxx</p>
+										<p>主管</p>
+										<p>xxxxxxxxxx</p>
+										<p>xxxxxxxxxx</p>
+									</li>
+								</ul>
+								<p>放心吧将和济州岛与普吉岛本地商户进行微信、支付宝支付合作，放心吧将开发一套支付系统，接入微信与支付宝，自动双币对照，实现游客无现金化消费，同时我们将跟大部分商家达成折扣合作，定期或不定期为游客开展各种线上支付打折活动。</p>
+						</div>
+						<!--团队4 end-->
+					</div>
+				</div>
+				<!--5.3屏 end-->
+				
+				<div class="footer">
+						<p>Copyright From 2012 © 济南汇师经济信息咨询有限公司 版权所有    鲁ICP备13032031号 经营许可证号：370112200114605<br/>
+免费服务专线：4006-902-904   电子邮箱：kefu#huishi365.com（#改@）<br/>
+汇师经纪专业为培训机构提供培训讲师、培训师，帮助培训机构彻底解决师资力量匮乏的问题，<br/>
+同时通过多种方式全面提升讲师知名度，帮助优秀培训师树立个人品牌，是中国最大的讲师经纪平台！</p>
+				</div>	
+			</div>
+		</div>
+		<!--二维码-->
+		<div class="erweima">
+			<img src="images/3bf33a87e950352a5936aa0a5543fbf2b2118b59.jpg"/>
+		</div>
+	<script type="text/javascript">
+	
+//禁止图片拖动
+		for(i in document.images)document.images[i].ondragstart=imgdragstart;
+		var page1 = $(".page1"),
+			page2= $(".page2"),
+			page3= $(".page3"),
+			page4= $(".page4"),
+			page5= $(".page5");
+			
+			$(".container").fullpage({
+				'verticalCentered':false,
+				'scrollingSpeed':400,
+				'css3':true,
+				'anchors':["page1","page2","page3","page4","page5"],
+				'verticalCentered':true,
+				'navigation':false,
+				'resize':true,
+				'menu':"#header",
+				'afterRender':function(){
+					//导航跳转
+					var _url = window.location.href,
+					mget = _url.substring(_url.indexOf("#")+5),
+					mgetlen = mget.length,
+					slidel=0;
+					mgetlen>1?slidel=mget.split("/"):slidel = Number(mget);
+					
+					typeof slidel != "number"?$.fn.fullpage.moveTo(slidel[0],slidel[1]):$.fn.fullpage.moveTo(slidel[0]);
+					//1屏动画
+					if(window.capp){
+						page1.addClass("page1phoneon");
+							setTimeout(function(){
+								page1.addClass("page1phoneon1");
+							},1000);
+					}else{
+						page1.addClass("page1on");
+					}
+				},
+				"afterLoad":function(a,i){
+					page1.removeClass("page1on").removeClass("page1phoneon").removeClass("page1phoneon1");
+					page2.removeClass("page2on");
+					page3.removeClass("page3on");
+					page4.removeClass("page4on");
+					page5.removeClass("page4on");
+					//动画
+					switch(i){
+						case 1:
+						if(window.capp){
+							page1.addClass("page1phoneon");
+									setTimeout(function(){
+										page1.addClass("page1phoneon1");
+									},1000);
+							}else{
+								page1.addClass("page1on");
+							}
+							
+						break;
+						case 2:
+							page2.addClass("page2on");
+						break;
+						case 3:
+							page3.addClass("page3on");
+						break;
+						case 4:
+							page4.addClass("page4on");
+						break;
+						case 5:
+							page5.addClass("page5on");
+						break;
+					}
+				},//aft::end
+				"afterSlideLoad":function(a,i,s){
+					if(s!=2&&s!=1){
+						$(".footer").show();
+					}else{
+						$(".footer").hide();
+					}
+				}
+			});//fullpage::end
+		
+		</script>
+	</body>
+</html>
